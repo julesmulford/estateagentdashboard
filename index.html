@@ -1,0 +1,61 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Real Estate Data Dashboard</title>
+  <style>
+    body { font-family: Arial, sans-serif; margin: 0; padding: 0; background-color: #f8f9fa; color: #333; }
+    header { padding: 10px 20px; background-color: #007bff; color: #fff; text-align: center; }
+    .container { max-width: 1200px; margin: auto; padding: 20px; }
+    .search-box { display: flex; justify-content: center; margin-bottom: 20px; }
+    .search-box input[type="text"] { padding: 8px; font-size: 1em; }
+    .search-box button { padding: 8px 15px; font-size: 1em; margin-left: 5px; cursor: pointer; background-color: #007bff; color: #fff; border: none; }
+    .charts { display: flex; flex-wrap: wrap; gap: 20px; justify-content: center; }
+    .chart { width: 45%; height: 300px; background: #fff; padding: 20px; box-shadow: 0px 4px 8px rgba(0, 0, 0, 0.1); border-radius: 8px; }
+  </style>
+    <!-- Link to favicon -->
+  <link rel="icon" href="assets/favicon.ico" type="image/x-icon">
+    <!-- Link to CSS -->
+  <link rel="stylesheet" href="style.css">
+    <!-- Leaflet.js and D3.js Libraries -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet/dist/leaflet.css" />
+  <script src="https://unpkg.com/leaflet/dist/leaflet.js"></script>
+  <script src="https://d3js.org/d3.v6.min.js"></script>
+</head>
+
+<body>
+  <!-- Logo Section -->
+  <header>
+    <img src="assets/logo.png" alt="Real Estate Dashboard Logo" class="logo">
+    <h1>Real Estate Dashboard: Heatmap of Property Prices, Crime Rates, and School Quality</h1>
+  </header>
+  <div class="container">
+    <div class="search-box">
+      <input type="text" id="zipCodeInput" placeholder="Enter ZIP Code">
+      <button onclick="fetchData()">Search</button>
+    </div>
+
+    <div class="charts">
+      <div class="chart" id="priceChart"><h3>House Price Trend</h3></div>
+      <div class="chart" id="crimeChart"><h3>Crime Rate Trend</h3></div>
+      <div class="chart" id="schoolChart"><h3>School Quality Trend</h3></div>
+    </div>
+  </div>
+
+  <!-- Control Section for Toggling Layers -->
+  <div class="controls">
+    <label><input type="checkbox" id="propertyPriceToggle" checked> Property Prices</label>
+    <label><input type="checkbox" id="crimeRateToggle" checked> Crime Rates</label>
+    <label><input type="checkbox" id="schoolQualityToggle" checked> School Quality</label>
+  </div>
+
+  <!-- Map Container -->
+  <div id="map"></div>
+
+  <!-- Legend for the Map -->
+  <div class="legend" id="legend"></div>
+
+  <script src="script.js"></script>
+</body>
+</html>
