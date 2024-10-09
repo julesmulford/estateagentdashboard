@@ -1,70 +1,126 @@
-/* Base styling */
-body {
-  font-family: Arial, sans-serif;
-  background-color: #f4f4f9;
+/* Reset and base styling */
+* {
   margin: 0;
   padding: 0;
+  box-sizing: border-box;
+}
+
+body {
+  font-family: Arial, sans-serif;
+  background-color: #f9fafb;
+  color: #333;
   display: flex;
   flex-direction: column;
   align-items: center;
 }
 
-h1 {
-  font-size: 24px;
-  color: #333;
-  margin-top: 20px;
+/* Header styling */
+header {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  padding: 20px;
+  width: 100%;
+  max-width: 1200px;
+  justify-content: center;
+}
+
+header img.logo {
+  width: 50px;
+  height: 50px;
+}
+
+header h1 {
+  font-size: 1.8rem;
+  color: #2c3e50;
+  text-align: center;
 }
 
 /* Map container styling */
 #map {
-  height: 600px;
+  height: 70vh;
   width: 90%;
-  max-width: 1000px;
-  margin: 20px auto;
-  border: 2px solid #333;
-  border-radius: 8px;
+  max-width: 1200px;
+  margin: 20px 0;
+  border: 1px solid #ccc;
+  border-radius: 10px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
 }
 
-/* Controls styling */
+/* Controls section */
 .controls {
-  margin: 15px;
   display: flex;
-  gap: 15px;
+  gap: 10px;
   justify-content: center;
+  align-items: center;
+  flex-wrap: wrap;
+  padding: 10px;
+  background: #ffffff;
+  border: 1px solid #e1e4e8;
+  border-radius: 8px;
+  width: 100%;
+  max-width: 1200px;
+  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
 }
 
 .controls label {
-  font-size: 14px;
-  color: #333;
+  font-size: 0.9rem;
+  color: #34495e;
   display: flex;
   align-items: center;
 }
 
 .controls input[type="checkbox"] {
-  margin-right: 5px;
+  margin-right: 8px;
+}
+
+/* Styling checkboxes with custom colors */
+.controls input[type="checkbox"]:checked {
+  accent-color: #3498db;
 }
 
 /* Legend styling */
 .legend {
   background: white;
   padding: 10px;
-  font-size: 12px;
+  font-size: 0.85rem;
   position: absolute;
-  bottom: 20px;
-  right: 20px;
-  border-radius: 5px;
-  box-shadow: 0px 0px 15px rgba(0, 0, 0, 0.2);
+  bottom: 30px;
+  right: 30px;
+  border-radius: 8px;
+  box-shadow: 0px 4px 12px rgba(0, 0, 0, 0.15);
+  max-width: 250px;
+  border: 1px solid #e1e4e8;
 }
 
 .legend div {
   display: flex;
   align-items: center;
-  margin-bottom: 5px;
+  margin-bottom: 8px;
 }
 
 .legend div span {
   width: 16px;
   height: 16px;
-  margin-right: 5px;
+  margin-right: 8px;
   display: inline-block;
+  border-radius: 3px;
+}
+
+/* Responsive layout adjustments */
+@media (max-width: 768px) {
+  header h1 {
+    font-size: 1.4rem;
+    text-align: center;
+  }
+
+  #map {
+    height: 60vh;
+    width: 95%;
+  }
+
+  .controls {
+    flex-direction: column;
+    align-items: flex-start;
+  }
 }

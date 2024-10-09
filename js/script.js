@@ -92,3 +92,26 @@ function renderSchoolChart(schoolData) {
     .attr("y", d => y(d.rating))
     .attr("height", d => 300 - y(d.rating));
 }
+
+// Checkboxes for toggling metrics
+document.getElementById("propertyPriceToggle").addEventListener("change", (e) => toggleLayer("propertyPrice", e.target.checked));
+document.getElementById("crimeRateToggle").addEventListener("change", (e) => toggleLayer("crimeRate", e.target.checked));
+document.getElementById("schoolQualityToggle").addEventListener("change", (e) => toggleLayer("schoolQuality", e.target.checked));
+
+// Function to toggle layers on/off based on checkbox state
+function toggleLayer(metric, isVisible) {
+  if (isVisible) {
+    layers[metric].addTo(map);
+  } else {
+    map.removeLayer(layers[metric]);
+  }
+}
+
+async function init() {
+  const metrics = ['propertyPrice', 'crimeRate', 'schoolQuality'];
+  for (let metric of metrics) {
+    // Fetch data with caching to minimize API calls
+    const data = await fetchDataWithCache(metric);
+    displayHeatmap(data, metric);  // Display each metric layer based on the cached data
+  }
+}
